@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head data-th-replace="~{fragment/basic-fragment :: head}"> </head>
+  <body>
+    <link rel="stylesheet" href="/css/create-blog.css" />
+
+    <header data-th-replace="~{fragment/basic-fragment :: header}"></header>
+
+    <section>
+      <form
+        action="/writter/create-blog"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="banner-preview">
+            <label for="banner">Select a Banner</label>
+          </div>
+          <input type="file" id="banner" name="banner" required />
+        </div>
+
+        <div class="form-group">
+          <label for="catagory">Select catagory</label>
+          <select name="catagory" id="catagory">
+            <option value="FRONTEND">Frontend</option>
+            <option value="BACKEND">Backend</option>
+            <option value="DATABASE">Database</option>
+          </select>
+          <br />
+        </div>
+
+        <input type="hidden" name="_csrf" data-th-value="${_csrf.token}" />
+
+        <div>
+          <input type="submit" />
+        </div>
+      </form>
+    </section>
+
+    <script src="/js/create-blog.js"></script>
+  </body>
+</html>
